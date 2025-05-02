@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> maxHappy(vector<int> nums) {
+    sort(nums.begin(), nums.end(), greater<int>()); // desc order
+    vector<int> res;
+    for (int i = 0; i < nums.size() && res.size() < 2; ++i) {
+        if (res.empty() || nums[i] != res.back()) {
+            res.push_back(nums[i]);
+        }
+    }
+
+    return res;
+}
+
+int main() {
+    vector<int> nums = {0, 8, 5, 2, 3, 8};
+    vector<int> result = maxHappy(nums);
+
+    for (int x : result)
+        cout << x << " ";
+    return 0;
+}
